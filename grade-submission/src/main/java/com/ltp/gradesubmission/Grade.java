@@ -1,10 +1,15 @@
 package com.ltp.gradesubmission;
 
+import javax.validation.constraints.NotBlank;
 import java.util.UUID;
 
 public class Grade {
+    @NotBlank(message = "Name cannot be blank")
     private String name;
+    @NotBlank(message = "Subject cannot be blank")
     private String subject;
+
+    @Score(message = "Score must be a letter grade")
     private String score;
     private String id;
     public Grade() {

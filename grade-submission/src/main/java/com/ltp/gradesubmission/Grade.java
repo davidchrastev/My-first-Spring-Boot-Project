@@ -9,7 +9,11 @@ public class Grade {
     @NotBlank(message = "Subject cannot be blank")
     private String subject;
 
-    @Score(message = "Score must be a letter grade")
+    @Score(message = "Score must be \"A+\", \"A\", \"A-\",\n" +
+            "            \"B+\", \"B\", \"B-\",\n" +
+            "            \"C+\", \"C\", \"C-\",\n" +
+            "            \"D+\", \"D\", \"D-\",\n" +
+            "            \"F\"")
     private String score;
     private String id;
     public Grade() {

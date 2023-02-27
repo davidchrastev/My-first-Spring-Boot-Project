@@ -1,9 +1,6 @@
-package Controller;
+package com.ltp.gradesubmission;
 
-import Repository.GradeRepository;
-import Service.GradeService;
-import com.ltp.gradesubmission.Constants;
-import com.ltp.gradesubmission.Grade;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,15 +9,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 @Controller
 public class GradeController {
 
-    GradeRepository gradeRepository = new GradeRepository();
-    GradeService gradeService = new GradeService();
+    @Autowired
+    GradeService gradeService;
 
     @GetMapping("/")
     public String gradeForm(Model model,@RequestParam(required = false) String id) {
@@ -39,7 +33,7 @@ public class GradeController {
 
     @GetMapping("/grades")
     public String getGrades(Model model) {
-        model.addAttribute("grades",gradeRepository.getStudentGrades());
+        model.addAttribute("grades",gradeService.getStudentGrades());
         return "grades";
     }
 
